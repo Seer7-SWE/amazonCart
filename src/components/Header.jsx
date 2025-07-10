@@ -15,6 +15,7 @@ const Header = ({ itemCount }) => {
             <Link to="/cart" style={styles.cartLink}>
               <ShoppingCart size={24} />
             </Link>
+             <Link to="/register">Register</Link>
             <span style={styles.cartCount}>{itemCount}</span>
           </div>
         </div>
