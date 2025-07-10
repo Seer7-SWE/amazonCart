@@ -4,3 +4,4 @@ export { default as Header } from "./Header";
 export { default as PurchaseModal } from "./PurchaseModal";
 export { default as Sidebar } from "./Sidebar";
 export { default as ProductModal } from "./ProductModal";
+export { default as Register } from "./Register"
