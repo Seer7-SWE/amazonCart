@@ -42,6 +42,30 @@ const styles = {
     fontSize: '12px',
     color: '#000',
   },
+
+  register: {
+  display: 'flex',
+  flex-direction: 'column',
+  width: '300px',
+  margin: 'auto',
+  gap: '10px',
+  padding: '20px',
+  border: '1px solid #ccc',
+  border-radius: '10px',
+  input: {
+  padding: '8px',
+  fontSize: '16px',
+},
+  button: {
+  padding: '10px',
+  font-size: '16px',
+  background-color: '#ff9900',
+  color: 'white',
+  border: 'none',
+  border-radius: '5px',
+},
+},
+
 };
 
 export default styles;
