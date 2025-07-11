@@ -61,7 +61,7 @@ const Register = () => {
           <option value="Delhi">Delhi</option>
         </select>
 
-        <button type="submit" to="/" >Register</button>
+        <button type="submit" link to="/"></button>Register</button>
       </form>
     </div>
   );
