@@ -1,7 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 import { AmazonStyleCart, WishList } from "./components";
 import Register from './components/Register';
-import Checkout from "./Checkout.jsx";
+import Checkout from "./components/Checkout.jsx";
+import CheckoutForm from "./components/Checkoutform.jsx"
 
 const App = () => {
     return (
@@ -9,6 +10,7 @@ const App = () => {
             <Route path="/" element={<WishList />} />
             <Route path="/cart" element={<AmazonStyleCart />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/checkout" element={<CheckoutForm />} />
             return <Checkout />;
         </Routes>
     );
