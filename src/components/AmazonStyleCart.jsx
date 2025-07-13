@@ -5,6 +5,8 @@ import { cartItemsState } from '../store/cartItemsState';
 import { cartTotalSelector } from '../store/cartTotalSelector';
 import { styles } from './AmazonStyleCart.module.js';
 import { Header, PurchaseModal } from "./"
+import { useNavigate } from 'react-router-dom';
+
 
 const AmazonStyleCart = () => {
   const [cartItems, setCartItems] = useRecoilState(cartItemsState);
@@ -24,6 +26,7 @@ const AmazonStyleCart = () => {
   };
 
   const handleCheckout = () => {
+    navigate('/checkout');
     setIsModalOpen(true);
   };
 
