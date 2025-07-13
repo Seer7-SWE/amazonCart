@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import { AmazonStyleCart, WishList } from "./components";
 import Register from './components/Register';
 import Checkout from "./components/Checkout";
-import CheckoutForm from "./components/Checkoutform"
+import CheckoutForm from "./components/CheckoutForm"
 
 const App = () => {
     return (
