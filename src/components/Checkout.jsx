@@ -15,43 +15,33 @@ useEffect(() => {
   load();
 }, []);
 
-
 const Checkout = () => {
-  const stripePromise = initStripe();
-
-  const [clientSecretSettings, setClientSecretSettings] = useState({
-    clientSecret: "",
-    loading: true,
-  });
+  const [stripePromise, setStripePromise] = useState(null);
+  const [clientSecret, setClientSecret] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function createPaymentIntent() {
-      const response = await axios.post("/api/create-payment-intent", {});
-      setClientSecretSettings({
-        clientSecret: response.data.client_secret,
-        loading: false,
-      });
+    async function setupStripe() {
+      const keyRes = await axios.get("/api/publishable-key");
+      const stripe = await loadStripe(keyRes.data.publishable_key);
+      setStripePromise(stripe);
+
+      const intentRes = await axios.post("/api/create-payment-intent", {});
+      setClientSecret(intentRes.data.client_secret);
+      setLoading(false);
     }
 
-    createPaymentIntent();
+    setupStripe();
   }, []);
 
+  if (loading || !stripePromise) {
+    return <h1>Loading...</h1>;
+  }
+
   return (
-    <>
-      {clientSecretSettings.loading ? (
-        <h1>Loading ...</h1>
-      ) : (
-        <Elements
-          stripe={stripePromise}
-          options={{
-            clientSecret: clientSecretSettings.clientSecret,
-            appearance: { theme: "stripe" },
-          }}
-        >
-          <CheckoutForm />
-        </Elements>
-      )}
-    </>
+    <Elements stripe={stripePromise} options={{ clientSecret }}>
+      <CheckoutForm />
+    </Elements>
   );
 };
 
