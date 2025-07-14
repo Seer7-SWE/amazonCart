@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import CheckoutForm from './CheckoutForm.jsx';
+import CheckoutForm from './CheckoutForm';
+import AmazonStyleCart from './AmazonStyleCart';
 
 const initStripe = async () => {
   const res = await axios.get("/api/publishable-key");
