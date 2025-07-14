@@ -1,4 +1,4 @@
-export   AmazonStyleCart from './AmazonStyleCart';
+export  { AmazonStyleCart } from './AmazonStyleCart';
 export   WishList  from "./WishList";
 import   Header  from "./Header";
 export  PurchaseModal  from "./PurchaseModal";
