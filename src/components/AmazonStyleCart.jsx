@@ -91,13 +91,7 @@ const AmazonStyleCart = () => {
             <span>Order Total:</span>
             <span>₹{total}</span>
           </div>
-          <button
-            style={styles.proceedButton}
-            onClick={handleProceed}
-            disabled={cartItems.length === 0}
-          >
-            Proceed to Buy
-          </button>
+          <button style={styles.proceedButton} onClick={handleProceed} disabled={cartItems.length === 0}>Proceed to Buy</button>
         </div>
       </main>
 
