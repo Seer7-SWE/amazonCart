@@ -101,8 +101,8 @@ const AmazonStyleCart = () => {
 
 };
 
-export default function AmazonStyleCart() {
+export  AmazonStyleCart() {
   return <div>Cart</div>;
-}
+};
 
-export default AmazonStyleCart;
+
