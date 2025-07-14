@@ -50,7 +50,7 @@ const Checkout = () => {
       )}
     </div>
   );
-};
+}
 
 export CheckoutForm() {
   return <div>Checkout Form</div>;
