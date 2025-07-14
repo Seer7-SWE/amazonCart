@@ -2,6 +2,7 @@ import { styles } from './AmazonStyleCart.module'
 import { CheckCircle } from 'lucide-react';
 
 
+
 const PurchaseModal = ({ handlePurchaseComplete, total }) => {
   return (
     <div style={styles.modal}>
