@@ -6,6 +6,8 @@ import { cartTotalSelector } from '../store/cartTotalSelector';
 import { styles } from './AmazonStyleCart.module.js';
 import { Header, PurchaseModal } from "./"
 import { useNavigate } from 'react-router-dom';
+import { Checkout } from './Checkout';
+import { CheckoutForm } from './CheckoutForm';
 
 
 const AmazonStyleCart = () => {
@@ -83,7 +85,7 @@ const AmazonStyleCart = () => {
           </div>
           <button
             style={styles.proceedButton}
-            onClick={handleCheckout}
+            onClick={handleCheckout, Checkout, CheckoutForm}
             disabled={cartItems.length === 0}
           >
             Proceed to Buy
