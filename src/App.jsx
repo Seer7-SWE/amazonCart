@@ -10,7 +10,7 @@ const App = () => {
             <Route path="/" element={<WishList />} />
             <Route path="/cart" element={<AmazonStyleCart />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/checkout" element={<CheckoutForm />} />
+            <Route path="/checkout" element={<Checkout />} />
             
         </Routes>
     );
