@@ -3,12 +3,10 @@ import axios from "axios";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import CheckoutForm from './CheckoutForm.jsx';
-import AmazonStyleCart from './AmazonStyleCart.jsx';
 
 const initStripe = async () => {
   const res = await axios.get("/api/publishable-key");
-  const publishableKey = await res.data.publishable_key;
-
+  const publishableKey = res.data.publishable_key;
   return loadStripe(publishableKey);
 };
 
@@ -23,7 +21,6 @@ const Checkout = () => {
   useEffect(() => {
     async function createPaymentIntent() {
       const response = await axios.post("/api/create-payment-intent", {});
-
       setClientSecretSettings({
         clientSecret: response.data.client_secret,
         loading: false,
@@ -34,7 +31,7 @@ const Checkout = () => {
   }, []);
 
   return (
-    <div>
+    <>
       {clientSecretSettings.loading ? (
         <h1>Loading ...</h1>
       ) : (
@@ -48,13 +45,8 @@ const Checkout = () => {
           <CheckoutForm />
         </Elements>
       )}
-    </div>
+    </>
   );
-}
-
-export CheckoutForm() {
-  return <div>Checkout Form</div>;
-}
-
+};
 
 export default Checkout;
