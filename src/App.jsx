@@ -11,6 +11,7 @@ const App = () => {
             <Route path="/cart" element={<AmazonStyleCart />} />
             <Route path="/register" element={<Register />} />
             <Route path="/checkout" element={<Checkout />} />
+
             
         </Routes>
     );
