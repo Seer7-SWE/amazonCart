@@ -100,4 +100,9 @@ const AmazonStyleCart = () => {
   );
 
 };
+
+export default function AmazonStyleCart() {
+  return <div>Cart</div>;
+}
+
 export default AmazonStyleCart;
