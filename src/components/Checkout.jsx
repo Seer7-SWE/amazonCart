@@ -4,11 +4,17 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import CheckoutForm from './CheckoutForm.jsx';
 
-const initStripe = async () => {
-  const res = await axios.get("/api/publishable-key");
-  const publishableKey = res.data.publishable_key;
-  return loadStripe(publishableKey);
-};
+const [stripePromise, setStripePromise] = useState(null);
+
+useEffect(() => {
+  async function load() {
+    const res = await axios.get("/api/publishable-key");
+    const stripe = await loadStripe(res.data.publishable_key);
+    setStripePromise(stripe);
+  }
+  load();
+}, []);
+
 
 const Checkout = () => {
   const stripePromise = initStripe();
