@@ -6,8 +6,8 @@ import { cartTotalSelector } from '../store/cartTotalSelector';
 import { styles } from './AmazonStyleCart.module.js';
 import { Header, PurchaseModal } from "./"
 import { useNavigate } from 'react-router-dom';
-import { Checkout } from './Checkout';
-import { CheckoutForm } from './CheckoutForm';
+import Checkout from './Checkout';
+import  CheckoutForm  from './CheckoutForm';
 
 
 const AmazonStyleCart = () => {
