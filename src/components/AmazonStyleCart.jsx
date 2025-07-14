@@ -33,6 +33,13 @@ const AmazonStyleCart = () => {
     setIsModalOpen(true);
   };
 
+ const navigate = useNavigate();
+
+ const handleProceed = () => {
+   navigate('/checkout');
+ };
+
+
   const handlePurchaseComplete = () => {
     setIsModalOpen(false);
     setCartItems([]);
@@ -86,7 +93,7 @@ const AmazonStyleCart = () => {
           </div>
           <button
             style={styles.proceedButton}
-            onClick={handleCheckout, Checkout, CheckoutForm}
+            onClick={handleProceed}
             disabled={cartItems.length === 0}
           >
             Proceed to Buy
