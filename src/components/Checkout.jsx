@@ -52,7 +52,7 @@ const Checkout = () => {
   );
 };
 
-export default function CheckoutForm() {
+export CheckoutForm() {
   return <div>Checkout Form</div>;
 }
 
