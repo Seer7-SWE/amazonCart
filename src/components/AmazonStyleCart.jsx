@@ -99,7 +99,7 @@ const AmazonStyleCart = () => {
     </div>
   );
 
-};
+}
 
 export  AmazonStyleCart();
   
