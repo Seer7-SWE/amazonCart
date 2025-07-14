@@ -4,7 +4,8 @@ import { Minus, Plus } from 'lucide-react';
 import { cartItemsState } from '../store/cartItemsState';
 import { cartTotalSelector } from '../store/cartTotalSelector';
 import { styles } from './AmazonStyleCart.module.js';
-import { Header, PurchaseModal } from "./"
+import { Header } from "./";
+import { PurchaseModel } from './';
 import { useNavigate } from 'react-router-dom';
 import Checkout from './Checkout';
 import  CheckoutForm  from './CheckoutForm';
