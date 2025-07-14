@@ -102,6 +102,7 @@ const AmazonStyleCart = () => {
 
 }
 
+export default AmazonStyleCart;
   
 
 
