@@ -1,7 +1,7 @@
-export  { AmazonStyleCart } from './AmazonStyleCart';
-export  { WishList }  from "./WishList";
-export  { Header } from "./Header";
-export { PurchaseModal } from "./PurchaseModal";
-export  { Sidebar }  from "./Sidebar";
-export  { ProductModal }  from "./ProductModal";
-export  { Register } from "./Register"
+export  { default as AmazonStyleCart } from './AmazonStyleCart';
+export  { default as WishList }  from "./WishList";
+export  { default as Header } from "./Header";
+export { default as PurchaseModal } from "./PurchaseModal";
+export  { default as Sidebar }  from "./Sidebar";
+export  { default as ProductModal }  from "./ProductModal";
+export  { default as Register } from "./Register"
