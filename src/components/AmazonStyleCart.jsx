@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { Minus, Plus } from 'lucide-react';
 import { cartItemsState } from '../store/cartItemsState';
