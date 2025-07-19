@@ -4,11 +4,9 @@ import { Minus, Plus } from 'lucide-react';
 import { cartItemsState } from '../store/cartItemsState';
 import { cartTotalSelector } from '../store/cartTotalSelector';
 import { styles } from './AmazonStyleCart.module.js';
-import { Header } from "./Header.jsx";
-import { PurchaseModel } from './PurchaseModal';
-import { useNavigate } from 'react-router-dom';
-import Checkout from './Checkout';
-import  CheckoutForm  from './CheckoutForm';
+import { Header, PurchaseModal } from "./";
+
+
 
 
 const AmazonStyleCart = () => {
@@ -29,15 +27,8 @@ const AmazonStyleCart = () => {
   };
 
   const handleCheckout = () => {
-    navigate('/checkout');
     setIsModalOpen(true);
   };
-
- const navigate = useNavigate();
-
- const handleProceed = () => {
-   navigate('/checkout');
- };
 
 
   const handlePurchaseComplete = () => {
@@ -91,7 +82,7 @@ const AmazonStyleCart = () => {
             <span>Order Total:</span>
             <span>₹{total}</span>
           </div>
-          <button style={styles.proceedButton} onClick={handleProceed} disabled={cartItems.length === 0}>Proceed to Buy</button>
+          <button style={styles.proceedButton} onClick={handleCheckout} disabled={cartItems.length === 0}>Proceed to Buy</button>
         </div>
       </main>
 
