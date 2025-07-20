@@ -8,7 +8,6 @@ import { Header, PurchaseModal } from "./";
 
 
 
-
 const AmazonStyleCart = () => {
   const [cartItems, setCartItems] = useRecoilState(cartItemsState);
   const { total, itemCount } = useRecoilValue(cartTotalSelector);
@@ -82,7 +81,7 @@ const AmazonStyleCart = () => {
             <span>Order Total:</span>
             <span>₹{total}</span>
           </div>
-          <button style={styles.proceedButton} onClick="https://buy.stripe.com/test_5kQ7sN2qMg6e98A1Ux2Fa00" disabled={cartItems.length === 0}>Proceed to Buy</button>
+          <button style={styles.proceedButton} onClick="window.open('https://buy.stripe.com/test_5kQ7sN2qMg6e98A1Ux2Fa00', '_blank');" disabled={cartItems.length === 0}>Proceed to Buy</button>
         </div>
       </main>
 
