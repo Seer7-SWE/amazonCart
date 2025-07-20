@@ -51,7 +51,7 @@ const styles = {
   borderRadius: '6px',
   textDecoration: 'none',
   fontWeight: '600',
-  transition: backgroundColor 0.3s ease, transform 0.2s ease,
+  
 },
 
 
