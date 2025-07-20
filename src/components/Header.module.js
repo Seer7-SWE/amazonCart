@@ -54,11 +54,6 @@ const styles = {
   transition: backgroundColor 0.3s ease, transform 0.2s ease,
 },
 
-registerbtn:hover {
-  backgroundColor: '#c97402'
-  transform: 'scale(1.05)';
-  cursor: 'pointer',
-},
 
   button: {
   padding: '10px',
