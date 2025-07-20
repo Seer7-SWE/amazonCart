@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './Register.module.css';
-import styles from './Header.module.js'
+
 const Register = () => {
   const [formData, setFormData] = useState({
     name: '',
