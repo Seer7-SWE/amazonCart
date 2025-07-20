@@ -43,19 +43,23 @@ const styles = {
     color: '#000',
   },
 
-  register: {
-  display: 'flex',
-  flexDirection: 'column',
-  width: '300px',
-  margin: 'auto',
-  gap: '10px',
-  padding: '20px',
-  border: '1px solid #ccc',
-  borderRadius: '10px',
-  input: {
-  padding: '8px',
-  fontSize: '16px',
+ register-btn: {
+  color: '#ffffff',
+  backgroundColor: '#f08804',
+  padding: '6px 14px',
+  border: 'none',
+  borderRadius: '6px',
+  textDecoration: 'none',
+  fontWeight: '600',
+  transition: backgroundColor 0.3s ease, transform 0.2s ease,
 },
+
+register-btn:hover {
+  backgroundColor: '#c97402'
+  transform: 'scale(1.05)';
+  cursor: 'pointer',
+},
+
   button: {
   padding: '10px',
   fontsize: '16px',
@@ -63,7 +67,7 @@ const styles = {
   color: 'white',
   border: 'none',
   borderRadius: '5px',
-},
+
 },
 
 };
