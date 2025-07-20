@@ -43,7 +43,7 @@ const styles = {
     color: '#000',
   },
 
- register-btn: {
+ registerbtn: {
   color: '#ffffff',
   backgroundColor: '#f08804',
   padding: '6px 14px',
@@ -54,7 +54,7 @@ const styles = {
   transition: backgroundColor 0.3s ease, transform 0.2s ease,
 },
 
-register-btn:hover {
+registerbtn:hover {
   backgroundColor: '#c97402'
   transform: 'scale(1.05)';
   cursor: 'pointer',
