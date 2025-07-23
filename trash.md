@@ -47,3 +47,6 @@ const Checkout = () => {
 };
 
 export default Checkout;
+
+
+Old code of Register.jsx
