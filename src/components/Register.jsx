@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from './Register.module.css';
+import { supabase } from '../supabaseClient';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -14,10 +15,44 @@ const Register = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  // Correctly defining handleSubmit as async
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('User Registered:', formData);
-    alert('Registration Successful!');
+
+    try {
+      // Sign up user with email and password
+      const { user, error } = await supabase.auth.signUp({
+        email: formData.email,
+        password: formData.password,
+      });
+
+      if (error) {
+        alert(error.message);
+        return;
+      }
+
+      // Step 2: Insert extra fields into Supabase "profiles" table
+      const { error: insertError } = await supabase
+        .from('profiles')
+        .insert([
+          {
+            id: user.id,
+            name: formData.name,
+            phone: formData.phone,
+            state: formData.state,
+            city: formData.city,
+          },
+        ]);
+
+      if (insertError) {
+        alert(insertError.message);
+        return;
+      }
+
+      alert('Registration successful! Please verify your email.');
+    } catch (err) {
+      alert('An unexpected error occurred. Please try again.');
+    }
   };
 
   return (
@@ -36,6 +71,13 @@ const Register = () => {
           type="email"
           name="email"
           placeholder="Enter Email"
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Create Password"
           onChange={handleChange}
           required
         />
