@@ -16,44 +16,36 @@ const Register = () => {
   };
 
   // Correctly defining handleSubmit as async
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  const { user, error: signUpError } = await supabase.auth.signUp({
+    email: formData.email,
+    password: formData.password,
+  });
 
-    try {
-      // Sign up user with email and password
-      const { user, error } = await supabase.auth.signUp({
-        email: formData.email,
-        password: formData.password,
-      });
+  if (signUpError) {
+    alert(signUpError.message);
+    return;
+  }
 
-      if (error) {
-        alert(error.message);
-        return;
-      }
+  const { error: insertError } = await supabase
+    .from('profiles')
+    .insert({
+      id: user.id,
+      name: formData.name,
+      phone: formData.phone,
+      state: formData.state,
+      city: formData.city,
+    });
 
-      // Step 2: Insert extra fields into Supabase "profiles" table
-      const { error: insertError } = await supabase
-        .from('profiles')
-        .insert([
-          {
-            id: user.id,
-            name: formData.name,
-            phone: formData.phone,
-            state: formData.state,
-            city: formData.city,
-          },
-        ]);
+  if (insertError) {
+    console.log('Insert Error:', insertError);
+    alert(insertError.message);
+    return;
+  }
 
-      if (insertError) {
-        alert(insertError.message);
-        return;
-      }
-
-      alert('Registration successful! Please verify your email.');
-    } catch (err) {
-      alert('An unexpected error occurred. Please try again.');
-    }
-  };
+  alert('Registration successful! Please check your email.');
+};
 
   return (
     <div className={styles.container}>
