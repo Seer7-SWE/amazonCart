@@ -120,3 +120,35 @@ const Register = () => {
 };
 
 export default Register;
+
+old code of register.jsx 
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  const { user, error: signUpError } = await supabase.auth.signUp({
+    email: formData.email,
+    password: formData.password,
+  });
+
+  if (signUpError) {
+    alert(signUpError.message);
+    return;
+  }
+
+  const { error: insertError } = await supabase
+    .from('profiles')
+    .insert({
+      id: user.id,
+      name: formData.name,
+      phone: formData.phone,
+      state: formData.state,
+      city: formData.city,
+    });
+
+  if (insertError) {
+    console.log('Insert Error:', insertError);
+    alert(insertError.message);
+    return;
+  }
+
+  alert('Registration successful! Please check your email.');
+};
