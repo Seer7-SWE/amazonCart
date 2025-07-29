@@ -9,6 +9,7 @@ const Register = () => {
     phone: '',
     state: '',
     city: '',
+    password: '',
   });
 
   const handleChange = (e) => {
