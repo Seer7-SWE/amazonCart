@@ -16,6 +16,37 @@ const Register = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+
+  async function handleInsertProfile(user) {
+  const { data: existingProfile } = await supabase
+    .from("profiles")
+    .select("id")
+    .eq("id", user.id)
+    .single();
+
+  if (!existingProfile) {
+    const { error: insertError } = await supabase.from("profiles").insert([
+      {
+        id: user.id,
+        name,
+        phone,
+        state,
+        city,
+      },
+    ]);
+
+    if (insertError) {
+      console.error("Profile insert error:", insertError);
+      alert("User created, but profile not saved");
+    } else {
+      alert("User registered successfully");
+    }
+  } else {
+    alert("User logged in successfully");
+  }
+}
+
+
   // Correctly defining handleSubmit as async
 const handleSubmit = async (e) => {
   e.preventDefault();
@@ -33,35 +64,26 @@ const handleSubmit = async (e) => {
   });
 
   if (error) {
-    console.error('Signup error:', error.message);
-    alert('Signup failed: ' + error.message);
-    return;
-  }
+  if (error.message.includes("already registered")) {
+    // try signing in
+    const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
 
-  const userId = data?.user?.id;
-  if (!userId) {
-    console.warn('No user ID returned. Email confirmation might be required.');
-    alert('Check your inbox for confirmation email.');
-    return;
-  }
-
-  const { error: profileError } = await supabase.from('profiles').insert([
-    {
-      id: userId,
-      name,
-      phone,
-      state,
-      city,
-    },
-  ]);
-
-  if (profileError) {
-    console.error('Profile insert error:', profileError.message);
-    alert('User created, but profile not saved.');
+    if (signInError) {
+      alert("Login failed: " + signInError.message);
+    } else {
+      handleInsertProfile(signInData.user);
+    }
   } else {
-    alert('Registration complete!');
+    alert("Signup failed: " + error.message);
   }
-};
+} else {
+  handleInsertProfile(data.user);
+}
+
+
 
 
   return (
