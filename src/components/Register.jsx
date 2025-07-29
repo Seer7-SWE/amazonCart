@@ -27,7 +27,7 @@ async function handleInsertProfile(user) {
 
 
   if (profileFetchError && profileFetchError.code !== 'PGRST116') {
-    console.error("Profile check error:", profileFetchError);
+     console.error("Error fetching profile:", error); // ✅ use the actual error object
     alert("Error checking profile.");
     return;
   }
