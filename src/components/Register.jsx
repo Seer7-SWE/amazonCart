@@ -19,34 +19,50 @@ const Register = () => {
   // Correctly defining handleSubmit as async
 const handleSubmit = async (e) => {
   e.preventDefault();
-  const { user, error: signUpError } = await supabase.auth.signUp({
-    email: formData.email,
-    password: formData.password,
+
+  const { name, email, phone, state, city, password } = formData;
+
+  if (!email || !password) {
+    alert('Email and Password are required.');
+    return;
+  }
+
+  const { data, error } = await supabase.auth.signUp({
+    email,
+    password,
   });
 
-  if (signUpError) {
-    alert(signUpError.message);
+  if (error) {
+    console.error('Signup error:', error.message);
+    alert('Signup failed: ' + error.message);
     return;
   }
 
-  const { error: insertError } = await supabase
-    .from('profiles')
-    .insert({
-      id: user.id,
-      name: formData.name,
-      phone: formData.phone,
-      state: formData.state,
-      city: formData.city,
-    });
-
-  if (insertError) {
-    console.log('Insert Error:', insertError);
-    alert(insertError.message);
+  const userId = data?.user?.id;
+  if (!userId) {
+    console.warn('No user ID returned. Email confirmation might be required.');
+    alert('Check your inbox for confirmation email.');
     return;
   }
 
-  alert('Registration successful! Please check your email.');
+  const { error: profileError } = await supabase.from('profiles').insert([
+    {
+      id: userId,
+      name,
+      phone,
+      state,
+      city,
+    },
+  ]);
+
+  if (profileError) {
+    console.error('Profile insert error:', profileError.message);
+    alert('User created, but profile not saved.');
+  } else {
+    alert('Registration complete!');
+  }
 };
+
 
   return (
     <div className={styles.container}>
