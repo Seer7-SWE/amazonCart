@@ -44,7 +44,7 @@ const Register = () => {
   } else {
     alert("User logged in successfully");
   }
-}
+};
 
 
   // Correctly defining handleSubmit as async
@@ -82,7 +82,7 @@ const handleSubmit = async (e) => {
 } else {
   handleInsertProfile(data.user);
 }
-
+};
 
 
 
