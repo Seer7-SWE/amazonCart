@@ -19,11 +19,12 @@ const Register = () => {
 async function handleInsertProfile(user) {
   const { name, phone, state, city } = formData; // fix: use values from form
 
-  const { data: existingProfile, error: profileFetchError } = await supabase
-    .from("profiles")
-    .select("id")
-    .eq("id", user.id)
-    .single();
+  const { data: existingProfile, error } = await supabase
+  .from("profiles")
+  .select("id")
+  .eq("id", user.id)
+  .single(); // this automatically sets headers
+
 
   if (profileFetchError && profileFetchError.code !== 'PGRST116') {
     console.error("Profile check error:", profileFetchError);
