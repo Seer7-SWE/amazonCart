@@ -16,13 +16,20 @@ const Register = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+async function handleInsertProfile(user) {
+  const { name, phone, state, city } = formData; // fix: use values from form
 
-  async function handleInsertProfile(user) {
-  const { data: existingProfile } = await supabase
+  const { data: existingProfile, error: profileFetchError } = await supabase
     .from("profiles")
     .select("id")
     .eq("id", user.id)
     .single();
+
+  if (profileFetchError && profileFetchError.code !== 'PGRST116') {
+    console.error("Profile check error:", profileFetchError);
+    alert("Error checking profile.");
+    return;
+  }
 
   if (!existingProfile) {
     const { error: insertError } = await supabase.from("profiles").insert([
@@ -44,7 +51,8 @@ const Register = () => {
   } else {
     alert("User logged in successfully");
   }
-};
+}
+
 
 
   // Correctly defining handleSubmit as async
