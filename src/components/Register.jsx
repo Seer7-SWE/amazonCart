@@ -68,8 +68,8 @@ const handleSubmit = async (e) => {
   }
 
   const { data, error } = await supabase.auth.signUp({
-    email,
-    password,
+    email: email.trim(),
+    password: password.trim()
   });
 
   if (error) {
